@@ -1,0 +1,29 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "references": {
+    "design-references": {
+      "path": ".opencode/design-references",
+      "description": "Brand design system references: Apple (glass), Linear (editorial), Vercel (editorial), Stripe, Figma, Canva, Nvidia, MongoDB, Datadog, and more. Use for visual style inspiration and design system patterns."
+    },
+    "design-prompts": {
+      "path": ".opencode/design-prompts",
+      "description": "Design prompts and workflows: brand-to-design, audit live sites, break default aesthetics, remix two brands. Use for design direction and creative briefs."
+    },
+    "design-recipes": {
+      "path": ".opencode/design-recipes",
+      "description": "Design recipes: landing page in 20 min, Figma to design-md, repo to design system, token budgets, wireframe to hi-fi. Use for step-by-step design workflows."
+    },
+    "tokens": {
+      "path": ".opencode/tokens",
+      "description": "Design tokens: colors, typography, spacing, shadows. Use for consistent design system values."
+    },
+    "design-systems": {
+      "path": ".opencode/design-systems",
+      "description": "Design system patterns and component conventions."
+    },
+    "accessibility": {
+      "path": ".opencode/accessibility",
+      "description": "Accessibility guidelines and audit patterns."
+    }
+  }
+}

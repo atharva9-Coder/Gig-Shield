@@ -1,0 +1,45 @@
+[build]
+  base = "frontend"
+  command = "npx expo export --platform web"
+  publish = "dist"
+
+# Build environment vars (EXPO_PUBLIC_* are inlined into the bundle at build time).
+# Secrets (OPENROUTER_KEY, DB password) must be set in the Netlify dashboard, NOT here.
+[context.production.environment]
+  EXPO_PUBLIC_SUPABASE_URL = "https://allkuqzucanjieqwwdbu.supabase.co"
+  EXPO_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsbGt1cXp1Y2FuamllcXd3ZGJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMxNDM3MjksImV4cCI6MjA5ODcxOTcyOX0.NQrmd1DuRO_8GJHFhQb8kkvZe-0iieZtokw3OWYM4QY"
+  EXPO_PUBLIC_SKIP_AUTH = "false"
+  EXPO_PUBLIC_CHAT_PROXY_URL = ""
+  EXPO_PUBLIC_POLICY_SEARCH_URL = ""
+
+# JS bundles: content-hashed filenames → aggressive cache
+[[headers]]
+  for = "/_expo/static/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Fonts: long cache
+[[headers]]
+  for = "/assets/node_modules/@expo-google-fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Images: medium cache
+[[headers]]
+  for = "/assets/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# HTML: no cache (always fresh)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Global security headers
+[[headers]]
+  for = "/**"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
